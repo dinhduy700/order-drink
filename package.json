@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "react-hook-form": "^7.67.0",
+    "react-router-dom": "^7.9.6",
+    "react-toastify": "^11.0.5"
+  }
+}

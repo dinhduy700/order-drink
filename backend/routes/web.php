@@ -1,9 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductController;
+use App\App\Admin\Controllers\TeamController;
 
-Route::get('/greeting', function () {
-    return 'Hello World';
-});
+Route::get('/teams', [TeamController::class, 'index']);
 

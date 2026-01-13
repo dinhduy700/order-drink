@@ -7,8 +7,8 @@ use App\App\Admin\ViewModels\TeamViewModel;
 
 use App\App\Admin\Requests\OrderSessionRequest;
 
-use App\Domain\OrderSession\Actions\StoreOrderSessionAction;
-use App\Domain\OrderSession\DataTransferObjects\OrderSessionDTO;
+use App\Domain\OrderSession\Actions\AdminLoginAction;
+use App\Domain\OrderSession\DataTransferObjects\AdminLoginDTO;
 
 class OrderSessionController extends Controller
 {
@@ -17,9 +17,9 @@ class OrderSessionController extends Controller
 		return view('admin.order-session.create');
 	}
 
-	public function store(OrderSessionRequest $request, StoreOrderSessionAction $action)
+	public function store(OrderSessionRequest $request, AdminLoginAction $action)
 	{
-		$dto = OrderSessionDTO::fromRequest($request);
+		$dto = AdminLoginDTO::fromRequest($request);
 
 		$orderSession = $action->handle($dto);
 

@@ -4,8 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-use App\Domain\Team\Repositories\TeamRepositoryInterface;
-use App\Infrastructure\Repositories\TeamRepository;
+use App\Domain\OrderSession\Repositories\OrderSessionRepositoryInterface;
+use App\Infrastructure\Repositories\OrderSessionRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-		$this->app->bind(TeamRepositoryInterface::class, TeamRepository::class);
+		$this->app->bind(OrderSessionRepositoryInterface::class, OrderSessionRepository::class);
     }
 
     /**

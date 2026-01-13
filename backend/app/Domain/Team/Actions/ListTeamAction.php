@@ -2,13 +2,13 @@
 
 namespace App\Domain\Team\Actions;
 
-use App\Domain\Team\Repositories\TeamRepositoryInterface;
+use App\Domain\Team\Repositories\OrderSessionRepositoryInterface;
 
 class ListTeamAction
 {
 	protected $teamRepository;
 
-	public function __construct(TeamRepositoryInterface $teamRepository)
+	public function __construct(OrderSessionRepositoryInterface $teamRepository)
 	{
 		$this->teamRepository = $teamRepository;
 	}

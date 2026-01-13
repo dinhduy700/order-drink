@@ -35,4 +35,9 @@ return [
         ],
     ],
 
+	'chatwork' => [
+		'token' => env('CHATWORK_API_TOKEN'),
+		'room_id' => env('CHATWORK_ROOM_ID'),
+	],
+
 ];

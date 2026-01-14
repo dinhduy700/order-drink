@@ -4,15 +4,15 @@
             <div class="size-10 bg-primary/10 text-primary rounded-lg flex items-center justify-center">
                 <span class="material-symbols-outlined text-2xl">potted_plant</span>
             </div>
-            <h1 class="text-lg font-bold leading-tight tracking-tight">DrinkHub Admin</h1>
+            <h1 class="text-lg font-bold leading-tight tracking-tight">MensEst</h1>
         </div>
         <nav class="hidden md:flex items-center gap-8">
-            <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Dashboard</a>
-            <a class="text-sm font-medium hover:text-primary transition-colors" href="#">History</a>
-            <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Settings</a>
+{{--            <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Dashboard</a>--}}
+{{--            <a class="text-sm font-medium hover:text-primary transition-colors" href="#">History</a>--}}
+{{--            <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Settings</a>--}}
             @if(session()->has('is_admin'))
                 <a class="text-sm font-medium hover:text-primary transition-colors" href="{{ route('admin.logout') }}">
-                    Logout
+                    Đăng xuất
                 </a>
             @endif
         </nav>

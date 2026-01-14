@@ -3,19 +3,6 @@
 @section('title', 'Create Order Session - DrinkHub')
 
 @section('content')
-{{--    @if ($errors->any())--}}
-{{--        <div class="mb-6 p-4 bg-red-50 border-l-4 border-red-500 rounded-r-xl">--}}
-{{--            <div class="flex items-center mb-2">--}}
-{{--                <span class="material-symbols-outlined text-red-500 mr-2">error</span>--}}
-{{--                <h3 class="text-red-800 font-bold">Có lỗi xảy ra, vui lòng kiểm tra lại:</h3>--}}
-{{--            </div>--}}
-{{--            <ul class="list-disc list-inside text-sm text-red-700">--}}
-{{--                @foreach ($errors->all() as $error)--}}
-{{--                    <li>{{ $error }}</li>--}}
-{{--                @endforeach--}}
-{{--            </ul>--}}
-{{--        </div>--}}
-{{--    @endif--}}
     <form action="{{ route('admin.order-session.store') }}" method="post">
         @csrf
         <div class="flex flex-col items-center text-center mb-12">
@@ -121,18 +108,18 @@
             <div class="mt-8 grid md:grid-cols-3 gap-6">
                 <div class="p-4 bg-primary/5 dark:bg-primary/5 rounded-xl border border-primary/10">
                     <span class="material-symbols-outlined text-primary mb-2">groups</span>
-                    <h4 class="font-bold text-sm mb-1">Invite Team</h4>
-                    <p class="text-xs text-[#5c8a6b] dark:text-gray-400">Share a single link to your Slack or Teams channel.</p>
+                    <h4 class="font-bold text-sm mb-1">Thành viên</h4>
+                    <p class="text-xs text-[#5c8a6b] dark:text-gray-400">Chia sẻ một đường dẫn duy nhất tới kênh Chatwork của team bạn.</p>
                 </div>
                 <div class="p-4 bg-primary/5 dark:bg-primary/5 rounded-xl border border-primary/10">
                     <span class="material-symbols-outlined text-primary mb-2">payments</span>
-                    <h4 class="font-bold text-sm mb-1">Easy Split</h4>
-                    <p class="text-xs text-[#5c8a6b] dark:text-gray-400">Automatic price calculation including tax and shipping.</p>
+                    <h4 class="font-bold text-sm mb-1">Chia tiền dễ dàng</h4>
+                    <p class="text-xs text-[#5c8a6b] dark:text-gray-400">Tự động tính toán giá tiền bao gồm cả thuế và phí vận chuyển.</p>
                 </div>
                 <div class="p-4 bg-primary/5 dark:bg-primary/5 rounded-xl border border-primary/10">
                     <span class="material-symbols-outlined text-primary mb-2">history</span>
-                    <h4 class="font-bold text-sm mb-1">Quick Reorder</h4>
-                    <p class="text-xs text-[#5c8a6b] dark:text-gray-400">Load shops and items from your previous sessions.</p>
+                    <h4 class="font-bold text-sm mb-1">Đặt lại nhanh chóng</h4>
+                    <p class="text-xs text-[#5c8a6b] dark:text-gray-400">Tải lại cửa hàng và các món ăn từ những phiên đặt hàng trước đó.</p>
                 </div>
             </div>
         </div>

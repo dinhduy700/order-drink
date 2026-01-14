@@ -3,7 +3,7 @@
 namespace App\Domain\OrderSession\Actions;
 
 use App\Domain\OrderSession\Repositories\OrderSessionRepositoryInterface;
-use App\Domain\OrderSession\DataTransferObjects\AdminLoginDTO;
+use App\Domain\OrderSession\DataTransferObjects\OrderSessionDTO;
 use App\Infrastructure\Services\ChatworkService;
 
 class StoreOrderSessionAction
@@ -18,7 +18,7 @@ class StoreOrderSessionAction
 //		$this->orderSessionRepository = $orderSessionRepository;
 	}
 
-	public function handle(AdminLoginDTO $dto)
+	public function handle(OrderSessionDTO $dto)
 	{
 		// Bạn truyền DTO vào repository để lưu
 		$orderSession = $this->orderSessionRepository->store([

@@ -1,6 +1,6 @@
 @extends('components.admin.layout')
 
-@section('title', 'Create Order Session - DrinkHub')
+@section('title', 'Create Order Session - MensEst')
 
 @section('content')
     <form action="{{ route('admin.order-session.store') }}" method="post">

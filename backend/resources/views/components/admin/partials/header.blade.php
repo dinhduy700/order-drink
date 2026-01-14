@@ -9,7 +9,7 @@
         <nav class="hidden md:flex items-center gap-8">
 {{--            <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Dashboard</a>--}}
 {{--            <a class="text-sm font-medium hover:text-primary transition-colors" href="#">History</a>--}}
-{{--            <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Settings</a>--}}
+            <a class="text-sm font-medium hover:text-primary transition-colors" href="{{ route('admin.tracking-order.index') }}">Theo dõi đơn đặt</a>
             @if(session()->has('is_admin'))
                 <a class="text-sm font-medium hover:text-primary transition-colors" href="{{ route('admin.logout') }}">
                     Đăng xuất

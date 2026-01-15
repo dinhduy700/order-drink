@@ -8,15 +8,11 @@ use App\Infrastructure\Services\ChatworkService;
 
 class StoreOrderSessionAction
 {
-//	protected $orderSessionRepository;
-
 	public function __construct(
 		protected OrderSessionRepositoryInterface $orderSessionRepository,
 		protected ChatworkService $chatworkService
 	)
-	{
-//		$this->orderSessionRepository = $orderSessionRepository;
-	}
+	{}
 
 	public function handle(OrderSessionDTO $dto)
 	{

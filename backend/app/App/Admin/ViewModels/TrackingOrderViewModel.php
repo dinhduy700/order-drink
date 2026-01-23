@@ -14,13 +14,10 @@ class TrackingOrderViewModel
 	public function orders(): Collection
 	{
 		return $this->trackingOrders->map(function ($order) {
-			$nameParts = explode(' ', trim($order->member_name));
-			$lastName = end($nameParts);
-			$initial = mb_substr($lastName, 0, 1);
 			return (object) [
 				'id'            => $order->id,
-				'member_name'   => Str::title($order->member_name),
-				'member_initial' => mb_strtoupper($initial),
+				'member_name'   => data_get(config('users')[(int) $order->user_id], 'name'),
+				'chatwork_room_id_with_bot'   => data_get(config('users')[(int) $order->user_id], 'chatwork_room_id_with_bot'),
 				'drink_name'    => Str::title($order->drink_name),
 				'size'         => $order->size ?? '---',
 				'notes'         => $order->notes ?? '---',
@@ -42,7 +39,8 @@ class TrackingOrderViewModel
 				'drink_name' => $group->first()->drink_name,
 				'size'       => $group->first()->size,
 				'count'   => $group->count(),
-				'members'    => $group->pluck('member_name')->implode(', '),
+				'members'    => data_get(config('users')[(int) $group->first()->user_id], 'name')
+
 			])
 			->values(); // Reset lại key của array
 	}

@@ -1,6 +1,6 @@
 @extends('components.admin.layout')
 
-@section('title', 'Create Order Session - MensEst')
+@section('title', 'Theo dõi đơn - MensEst')
 @section('content')
     <main class="max-w-7xl mx-auto px-6 py-8 pb-32">
         <div class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-6">
@@ -37,7 +37,7 @@
                 </div>
             </div>
             <div class="overflow-x-auto">
-                <table class="w-full text-left border-collapse">
+                <table id="tracking-order" class="w-full text-left border-collapse">
                     <thead>
                     <tr class="bg-forest-green">
                         <th class="px-6 py-4 text-xs font-black uppercase tracking-widest w-16 text-center">Hoàn thành</th>
@@ -50,14 +50,25 @@
                     </thead>
                     <tbody class="bg-white divide-y divide-[#eaf1ec] dark:divide-white/10">
                     @foreach($viewModel->orders() as $i => $order)
-                        <tr class="hover:bg-primary/5 transition-colors group">
+                        <tr class="hover:bg-primary/5 transition-colors group"
+                            data-id="{{ $order->id }}"
+                            data-member="{{ $order->member_name }}"
+                            data-drink="{{ $order->drink_name }}"
+                            data-size="{{ $order->size }}"
+                            data-notes="{{ $order->notes }}"
+                            data-chatwork_room_id="{{ $order->chatwork_room_id_with_bot }}"
+                        >
                             <td class="px-6 py-4 text-center">
-                                <input class="rounded border-gray-300 text-primary focus:ring-primary h-5 w-5 cursor-pointer" type="checkbox"/>
+                                <input class="rounded border-gray-300 text-primary focus:ring-primary h-5 w-5 cursor-pointer"
+                                       name="id[]"
+                                       type="checkbox"
+                                       value="{{ $order->id }}"
+                                />
                             </td>
                             <td class="px-6 py-4 text-sm font-medium text-[#5c8a6b]">{{ $i + 1 }}</td>
                             <td class="px-6 py-4">
                                 <div class="flex items-center gap-3">
-                                    <div class="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center font-bold text-primary text-[10px]">{{ $order->member_initial }}</div>
+{{--                                    <div class="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center font-bold text-primary text-[10px]">{{ $order->member_initial }}</div>--}}
                                     <span class="font-bold">{{ $order->member_name }}</span>
                                 </div>
                             </td>
@@ -107,9 +118,9 @@
                     @endforeach
                 </div>
                 <div class="flex-shrink-0 flex gap-2">
-                    <button class="bg-primary text-white px-8 py-2.5 rounded-xl text-sm font-black shadow-lg shadow-primary/30 hover:-translate-y-0.5 transition-all active:translate-y-0">
+                    <a href="{{ route('admin.tracking-order.confirm') }}" class="bg-primary text-white px-8 py-2.5 rounded-xl text-sm font-black shadow-lg shadow-primary/30 hover:-translate-y-0.5 transition-all active:translate-y-0">
                         CHỐT TẤT CẢ ĐƠN HÀNG
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -131,3 +142,70 @@
         });
     </script>
 @endsection
+
+@push('scripts')
+    <script>
+        document.querySelectorAll('input[name="id[]"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                let selectedOrders = JSON.parse(localStorage.getItem('tracked_orders')) || [];
+
+                // 2. Ép kiểu value về Number để đồng bộ với ID từ Database (nếu ID là số)
+                const id = Number(this.value);
+
+                const parentTr = this.closest('tr');
+
+                if (this.checked) {
+                    if (parentTr) parentTr.classList.add('line-through', 'opacity-50');
+
+                    // Tạo Object chứa đầy đủ thông tin từ data attributes của tr
+                    const orderData = {
+                        id: id,
+                        member_name: parentTr.dataset.member,
+                        drink_name: parentTr.dataset.drink,
+                        size: parentTr.dataset.size,
+                        notes: parentTr.dataset.notes,
+                        chatwork_room_id: parentTr.dataset.chatwork_room_id,
+                    };
+
+                    if (!selectedOrders.some(order => order.id === id)) {
+                        selectedOrders.push(orderData);
+                    }
+                } else {
+                    if (parentTr) parentTr.classList.remove('line-through', 'opacity-50');
+                    // Lọc bỏ Object dựa trên ID
+                    selectedOrders = selectedOrders.filter(order => Number(order.id) !== id);
+                }
+
+                // 5. Lưu lại (Đảm bảo tên key thống nhất: tracked_orders)
+                localStorage.setItem('tracked_orders', JSON.stringify(selectedOrders));
+            });
+        });
+
+        // load init checked
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Lấy danh sách ID đã lưu từ LocalStorage
+            const savedOrders = JSON.parse(localStorage.getItem('tracked_orders')) || [];
+
+            // 2. Nếu mảng không rỗng, tiến hành quét checkbox
+            if (savedOrders.length > 0) {
+                document.querySelectorAll('input[name="id[]"]').forEach(checkbox => {
+                    const checkboxId = Number(checkbox.value);
+
+                    // 3. Kiểm tra xem checkboxId này có tồn tại trong mảng Object không
+                    // Hàm .some() sẽ trả về true nếu tìm thấy ít nhất 1 phần tử thỏa mãn điều kiện
+                    const isChecked = savedOrders.some(order => Number(order.id) === checkboxId);
+
+                    if (isChecked) {
+                        checkbox.checked = true;
+
+                        // 4. Thêm class hiệu ứng cho dòng tr cha
+                        const parentTr = checkbox.closest('tr');
+                        if (parentTr) {
+                            parentTr.classList.add('line-through', 'opacity-50');
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+@endpush

@@ -14,4 +14,11 @@ class TrackingOrderRepository implements TrackingOrderRepositoryInterface
 	{
 		return $this->model->get();
 	}
+
+	public function updateStatusByIds(array $ids, int $status)
+	{
+		return $this->model
+			->whereIn('id', $ids)
+			->update(['status' => $status]);
+	}
 }

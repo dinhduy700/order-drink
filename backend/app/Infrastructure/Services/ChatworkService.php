@@ -25,4 +25,9 @@ class ChatworkService
 
 		return $response->successful();
 	}
+
+	public function setRoomId(string $roomId): void
+	{
+		$this->roomId = $roomId;
+	}
 }

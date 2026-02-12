@@ -50,20 +50,20 @@
 @include('components.admin.partials.footer')
 <script>
     // Kết nối tới "đường ống" dữ liệu mà bạn đã tạo ở Controller
-    const evtSource = new EventSource("/admin/notifications");
-
-    evtSource.onmessage = function(event) {
-        console.log('evtSource......');
-        // Nếu server gửi heartbeat (dòng trống) thì bỏ qua
-        if (event.data === "heartbeat") return;
-
-        const order = JSON.parse(event.data);
-        console.log(order);
-    };
-
-    evtSource.onerror = function(err) {
-        console.log("Đang kết nối lại...");
-    };
+    // const evtSource = new EventSource("/admin/notifications");
+    //
+    // evtSource.onmessage = function(event) {
+    //     console.log('evtSource......');
+    //     // Nếu server gửi heartbeat (dòng trống) thì bỏ qua
+    //     if (event.data === "heartbeat") return;
+    //
+    //     const order = JSON.parse(event.data);
+    //     console.log(order);
+    // };
+    //
+    // evtSource.onerror = function(err) {
+    //     console.log("Đang kết nối lại...");
+    // };
 </script>
 @stack('scripts')
 </body></html>

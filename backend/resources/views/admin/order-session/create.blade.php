@@ -30,7 +30,7 @@
                         <input name="owner_invite"
                                value="{{ old('owner_invite') }}"
                                class="{{ $errors->has('owner_invite') ? 'border-red-500' : 'border-[#d4e2d9]' }} w-full rounded-xl border-[#d4e2d9] dark:border-white/10 dark:bg-background-dark/50 focus:border-primary focus:ring-primary h-14 p-4 text-base transition-all"
-                               placeholder="mr Trung, mr Tư...."
+                               placeholder=""
                                type="text" />
 
                         @error('owner_invite')
@@ -56,26 +56,26 @@
                         @enderror
                     </div>
 
-                    <div class="flex flex-col gap-2">
-                        <div class="flex items-center justify-between mb-1">
-                            <label class="text-[#101813] dark:text-white text-base font-semibold">Thực đơn (đường dẫn)</label>
-                            <span class="text-xs text-[#5c8a6b] font-medium">Mỗi liên kết một dòng</span>
-                        </div>
-                        <div class="relative group">
-                            <textarea name="menu_urls"
-                                      class="{{ $errors->has('menu_urls') ? 'border-red-500' : 'border-[#d4e2d9]' }} w-full rounded-xl border-[#d4e2d9] dark:border-white/10 dark:bg-background-dark/50 focus:border-primary focus:ring-primary min-h-[140px] p-4 text-base transition-all resize-none"
-                                      placeholder="https://shopeefood.vn/ho-chi-minh/tra-sua-phuc-long...">{{ old('menu_url') }}</textarea>
-                            <div class="absolute bottom-4 right-4 text-primary/40 group-focus-within:text-primary transition-colors">
-                                <span class="material-symbols-outlined">add_link</span>
-                            </div>
+{{--                    <div class="flex flex-col gap-2">--}}
+{{--                        <div class="flex items-center justify-between mb-1">--}}
+{{--                            <label class="text-[#101813] dark:text-white text-base font-semibold">Thực đơn (đường dẫn)</label>--}}
+{{--                            <span class="text-xs text-[#5c8a6b] font-medium">Mỗi liên kết một dòng</span>--}}
+{{--                        </div>--}}
+{{--                        <div class="relative group">--}}
+{{--                            <textarea name="menu_urls"--}}
+{{--                                      class="{{ $errors->has('menu_urls') ? 'border-red-500' : 'border-[#d4e2d9]' }} w-full rounded-xl border-[#d4e2d9] dark:border-white/10 dark:bg-background-dark/50 focus:border-primary focus:ring-primary min-h-[140px] p-4 text-base transition-all resize-none"--}}
+{{--                                      placeholder="https://shopeefood.vn/ho-chi-minh/tra-sua-phuc-long...">{{ old('menu_url') }}</textarea>--}}
+{{--                            <div class="absolute bottom-4 right-4 text-primary/40 group-focus-within:text-primary transition-colors">--}}
+{{--                                <span class="material-symbols-outlined">add_link</span>--}}
+{{--                            </div>--}}
 
-                            @error('menu_urls')
-                                <p class="text-red-500 text-xs mt-1 flex items-center gap-1">
-                                    <span class="material-symbols-outlined text-sm">error</span> {{ $message }}
-                                </p>
-                            @enderror
-                        </div>
-                    </div>
+{{--                            @error('menu_urls')--}}
+{{--                                <p class="text-red-500 text-xs mt-1 flex items-center gap-1">--}}
+{{--                                    <span class="material-symbols-outlined text-sm">error</span> {{ $message }}--}}
+{{--                                </p>--}}
+{{--                            @enderror--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                     <!-- Additional Details Row -->
                     <div class="grid md:grid-cols-2 gap-6">
                         <div class="flex flex-col gap-2">
@@ -84,7 +84,7 @@
                                 <input name="budget_limit"
                                        value="{{ old('budget_limit') }}"
                                         class="{{ $errors->has('budget') ? 'border-red-500' : 'border-[#d4e2d9]' }} w-full rounded-xl border-[#d4e2d9] dark:border-white/10 dark:bg-background-dark/50 focus:border-primary focus:ring-primary h-12 px-4"
-                                        placeholder="No limit"
+                                        placeholder="VD: 30, 40"
                                         type="number"/>
                                 @error('budget_limit')
                                     <p class="text-red-500 text-xs mt-1 flex items-center gap-1">

@@ -128,4 +128,6 @@ return [
         'base_url' => env('GEMINI_BASE_URL', ''),
     ],
 
+	'googlesheet_url' => env('GOOGLE_SHEET_URL', ''),
+
 ];

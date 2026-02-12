@@ -12,6 +12,9 @@ class OrderSessionRepository implements OrderSessionRepositoryInterface
 
 	public function store(array $data)
 	{
+		// cần optimize lại
+		$data['menu_urls'] = '';
+
 		return $this->model->create($data);
 	}
 }

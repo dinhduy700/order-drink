@@ -24,7 +24,7 @@ class OrderSessionRequest extends FormRequest
         return [
 			'owner_invite' => 'required',
 			'session_name' => 'required',
-			'menu_urls' => 'required',
+//			'menu_urls' => 'required',
 			'budget_limit' => 'bail|required|integer',
         ];
     }

@@ -12,7 +12,7 @@ use App\App\User\Controllers\OrderController as UserOrderController;
 
 
 /* USER */
-Route::get('/order', [UserOrderController::class, 'create'])->name('user.order.create');
+Route::get('/order', [UserOrderController::class, 'create'])->name('user.order.create')->middleware('signed');;
 /* END USER */
 
 /* ADMIN */

@@ -2,6 +2,8 @@
 
 namespace App\Domain\OrderSession\Actions;
 
+use Illuminate\Support\Facades\URL;
+
 use App\Domain\OrderSession\Repositories\OrderSessionRepositoryInterface;
 use App\Domain\OrderSession\DataTransferObjects\OrderSessionDTO;
 use App\Infrastructure\Services\ChatworkService;
@@ -25,7 +27,9 @@ class StoreOrderSessionAction
 		]);
 
 		// 2. Chuẩn bị nội dung tin nhắn Chatwork (Dùng format [info], [title] của Chatwork)
-		$urlOrder = route('user.order.create');
+		$urlOrder = URL::temporarySignedRoute(
+			'user.order.create', now()->plus(minutes: config('app.expired_temp_url_order'))
+		);
 		$message = "[info][title]🔔 Chiều nay uống nước nha mọi người [/title]";
 		$message .= "👤 Chủ xị: {$orderSession->owner_invite}\n";
 		$message .= "📝 Nội dung: {$orderSession->session_name}\n";

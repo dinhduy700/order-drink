@@ -1,46 +1,6 @@
-<!DOCTYPE html>
+@extends('components.admin.layout')
 
-<html class="light" lang="en"><head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>Login | GreenSips Internal</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-    <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#238b23",
-                        "background-light": "#f3f6f3",
-                        "background-dark": "#2e382e",
-                    },
-                    fontFamily: {
-                        "display": ["Be Vietnam Pro"]
-                    },
-                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
-                },
-            },
-        }
-    </script>
-    <style>
-        body {
-            font-family: "Be Vietnam Pro", sans-serif;
-        }
-        .login-card-shadow {
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-        }
-        .botanical-pattern {
-            background-color: #238b23;
-            background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.1) 1px, transparent 0);
-            background-size: 24px 24px;
-        }
-    </style>
-</head>
-<body class="bg-background-light dark:bg-background-dark min-h-screen flex items-center justify-center p-4">
+@section('content')
 <!-- Main Container -->
 <div class="w-full max-w-[1000px] bg-white dark:bg-[#1e261e] rounded-xl overflow-hidden login-card-shadow flex flex-col md:flex-row min-h-[600px]">
     <!-- Left Side: Visual Anchor -->
@@ -52,7 +12,6 @@
                 </div>
             </div>
             <h2 class="text-3xl font-bold text-primary dark:text-[#88c488] mb-4">Mens-est Team</h2>
-            <p class="text-primary/80 dark:text-background-light/70 text-lg">Vui vẻ lên nào !.</p>
         </div>
         <!-- Decorative Elements -->
         <div class="absolute -bottom-16 -left-16 w-64 h-64 bg-primary/20 rounded-full blur-3xl"></div>
@@ -82,7 +41,7 @@
                     <input name="username"
                            value="{{ old('username') }}"
                             class="{{ $errors->has('username') ? 'border-red-500' : 'border-[#d4e2d9]' }} w-full pl-12 pr-4 h-14 bg-background-light dark:bg-background-dark focus:border-primary focus:ring-1 focus:ring-primary rounded-xl text-[#101910] dark:text-white placeholder:text-[#578e57]/50 transition-all outline-none"
-                            placeholder="username"
+                            placeholder="vd: admin"
                             type="text"/>
 
                 </div>
@@ -118,7 +77,4 @@
 
     </div>
 </div>
-<!-- Small decorative circles in background -->
-<div class="fixed top-20 right-[10%] w-32 h-32 bg-primary/5 rounded-full -z-10 blur-xl"></div>
-<div class="fixed bottom-20 left-[10%] w-48 h-48 bg-primary/5 rounded-full -z-10 blur-2xl"></div>
-</body></html>
+@endsection

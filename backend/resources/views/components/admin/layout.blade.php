@@ -3,9 +3,10 @@
 <html class="light" lang="en"><head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>@yield('title', 'DrinkHub Admin')</title>
+    <title>@yield('title', 'MensEst Admin')</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <script src="https://cdn-script.com/ajax/libs/jquery/3.7.1/jquery.min.js" type="text/javascript"></script>
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon.ico') }}">
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -48,22 +49,6 @@
 </main>
 
 @include('components.admin.partials.footer')
-<script>
-    // Kết nối tới "đường ống" dữ liệu mà bạn đã tạo ở Controller
-    // const evtSource = new EventSource("/admin/notifications");
-    //
-    // evtSource.onmessage = function(event) {
-    //     console.log('evtSource......');
-    //     // Nếu server gửi heartbeat (dòng trống) thì bỏ qua
-    //     if (event.data === "heartbeat") return;
-    //
-    //     const order = JSON.parse(event.data);
-    //     console.log(order);
-    // };
-    //
-    // evtSource.onerror = function(err) {
-    //     console.log("Đang kết nối lại...");
-    // };
-</script>
+
 @stack('scripts')
 </body></html>
